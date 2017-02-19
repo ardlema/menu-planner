@@ -1,1 +1,1 @@
-"Garbanzos"|"Tomate,Garbanzos"
+Garbanzos|Tomate,Garbanzos
