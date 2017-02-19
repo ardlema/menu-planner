@@ -3,10 +3,10 @@ package org.ardlema.menuplanner
 import org.scalatest.{FlatSpec, Matchers}
 
 class DishParserSpec extends FlatSpec with Matchers {
-  "The dish parser" should "extract lunches from a file" in {
-    val expectedLunches = Map(Lunes -> Dish("Garbanzos", List("Tomate, Garbanzos")))
+  "The dish parser" should "extract lunches from a text file" in {
+    val expectedLunches = List(Dish("Garbanzos", List("Tomate, Garbanzos")))
 
-    val parsedLunches = DishParserFromFile.parseLunches
+    val parsedLunches = DishParserFromTextFile.parseLunches
     parsedLunches shouldBe(expectedLunches)
   }
 
@@ -20,12 +20,12 @@ class DishParserSpec extends FlatSpec with Matchers {
 
 trait DishParser {
 
-  def parseLunches
+  def parseLunches: List[Dish]
 }
 
-object DishParserFromFile extends DishParser {
+object DishParserFromTextFile extends DishParser {
 
-  def parseLunches = Map(Lunes -> Dish("", List("")))
+  def parseLunches = List(Dish("", List("")))
 }
 
 sealed trait WeekDay { def name: String }
