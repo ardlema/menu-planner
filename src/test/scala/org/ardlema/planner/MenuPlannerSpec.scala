@@ -2,14 +2,15 @@ package org.ardlema.planner
 
 import java.io.File
 
-import org.ardlema.parser.Dish
+import org.ardlema.parser.{Dish, DishParserFromTextFile}
 import org.scalatest.{FlatSpec, Matchers}
 
 class MenuPlannerSpec extends FlatSpec with Matchers {
   "The menu planner" should "create a plan for a whole week" in {
     val path = getClass.getResource("/lunchesforaweek.txt").getPath
     val lunchesFile = new File(path)
-    val plannedLunches: Map[WeekDay, Dish] = MenuPlanner.planAWeek(lunchesFile)
+    val lunches = DishParserFromTextFile.parse(lunchesFile)
+    val plannedLunches: Map[WeekDay, Dish] = MenuPlanner.planAWeek(lunches)
     plannedLunches.values should contain(Dish("Garbanzos","Tomate,Garbanzos"))
   }
 
@@ -18,7 +19,7 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
 
 object MenuPlanner {
 
-  def planAWeek(file: File): Map[WeekDay, Dish] = {
+  def planAWeek(lunches: List[Dish]): Map[WeekDay, Dish] = {
     Map()
   }
 }

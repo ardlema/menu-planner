@@ -10,7 +10,7 @@ class DishParserSpec extends FlatSpec with Matchers {
 
     val path = getClass.getResource("/lunches.txt").getPath
     val lunchesFile = new File(path)
-    val parsedLunches = DishParserFromTextFile.parseFile(lunchesFile)
+    val parsedLunches = DishParserFromTextFile.parse(lunchesFile)
     parsedLunches shouldBe(expectedLunches)
   }
 
