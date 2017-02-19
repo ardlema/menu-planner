@@ -1,4 +1,4 @@
-package org.ardlema.parser
+package org.ardlema.planner
 
 sealed trait WeekDay { def name: String }
 case object Lunes extends WeekDay { val name = "Lunes" }

@@ -1,0 +1,7 @@
+Garbanzos|Tomate,Garbanzos
+Arroz|Arroz
+Pisto|Tomate,Calabacin,Pimiento Rojo
+Lentejas|Lentejas,Zanahorias
+Pure de calabaza|Calabaza,Patatas
+Carne estofada|Carne,Patatas
+Costillas|Costillas
