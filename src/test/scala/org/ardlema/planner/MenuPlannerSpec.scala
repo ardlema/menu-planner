@@ -12,9 +12,19 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     val path = getClass.getResource("/lunchesforaweek.txt").getPath
     val lunchesFile = new File(path)
     val lunches = DishParserFromTextFile.parse(lunchesFile)
-    val plannedLunches = MenuPlanner.planAWeek(lunches)
+    val typesPerDay = List(
+      (Lunes, Legumbres),
+      (Martes, Arroz),
+      (Miercoles, Verduras),
+      (Jueves, Legumbres),
+      (Viernes, Verduras),
+      (Sabado, Carne),
+      (Domingo, Carne))
+    val plannedLunches: List[(WeekDay, Dish)] = MenuPlanner.planAWeek(lunches, typesPerDay)
 
-    plannedLunches should contain(Dish("Garbanzos","Tomate,Garbanzos"))
+    plannedLunches should contain oneOf(
+      (Lunes, Dish("Garbanzos", "Tomate,Garbanzos", Legumbres)),
+      (Lunes, Dish("Lentejas", "Lentejas,Zanahorias", Legumbres)))
   }
 
   //TODO: Wrong path tests!!
@@ -22,22 +32,24 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
 
 object MenuPlanner {
 
-  def planAWeek(lunches: List[Dish]) = {
+  def planAWeek(lunches: List[Dish], typesPerDay: List[(WeekDay, DishType)]) = {
 
-    def dishesForAWeek(lunchesToBeSelected: List[Dish], lunchesSelected: List[Dish]): List[Dish] = {
+    def dishesForAWeek(
+        lunchesToBeSelected: List[Dish],
+        typesPerDay: List[(WeekDay, DishType)],
+        lunchesSelected: List[(WeekDay, Dish)]): List[(WeekDay, Dish)] = {
       if (lunchesSelected.size == WeekDays.weekDays.size) lunchesSelected
       else {
         val random = Random
-        val nextDish = random.nextInt(lunchesToBeSelected.size)
-        val elementSelected = lunchesToBeSelected(nextDish)
-        val newLunchesToBeSelected = lunchesToBeSelected.take(nextDish - 1) ++ lunchesToBeSelected.drop(nextDish)
-        dishesForAWeek(newLunchesToBeSelected, elementSelected :: lunchesSelected)
+        val filteredDishes = lunchesToBeSelected.filter(d => d.dishType.identifier.equals(typesPerDay.head._2.identifier))
+        val nextDish = random.nextInt(filteredDishes.size)
+        val elementSelected = filteredDishes(nextDish)
+        val newLunchesToBeSelected = lunchesToBeSelected.filterNot(d => d.description.equals(elementSelected.description))
+        dishesForAWeek(newLunchesToBeSelected, typesPerDay.tail, ((typesPerDay.head._1, elementSelected) :: lunchesSelected))
       }
-
     }
 
-
-    dishesForAWeek(lunches, List())
+    dishesForAWeek(lunches, typesPerDay, List())
   }
 }
 
