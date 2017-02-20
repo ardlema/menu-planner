@@ -9,7 +9,8 @@ scalaVersion := "2.11.5"
 libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "2.2.1" % "test" withSources() withJavadoc(),
   "org.scalacheck" %% "scalacheck" % "1.12.1" % "test" withSources() withJavadoc(),
-  "javax.mail" % "mail" % "1.4.7"
+  "javax.mail" % "mail" % "1.4.7",
+  "org.apache.velocity" % "velocity" % "1.7"
 )
 
 initialCommands := "import org.ardlema.menuplanner._"

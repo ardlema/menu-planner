@@ -6,7 +6,7 @@ import javax.mail.internet._
 object MenuMailer {
 
   val sender = "****@gmail.com"
-  val recipientAlberto = "***@gmail.com"
+  val recipientAlberto = "****@gmail.com"
   //val recipientRebeca = "***@gmail.com"
   val host = "smtp.gmail.com"
   val port = "587"
@@ -36,11 +36,12 @@ object MenuMailer {
   message.setSubject("Menu Planner - Este es su menu para esta semana")
 
   // Now set the actual message
-  message.setText("Probando")
+
 
   // Send message
-  def sendMessage() {
+  def sendMessage(body: String) {
     val tr = session.getTransport("smtp")
+    message.setContent(body, "text/html")
     tr.connect(sender, "****")
     tr.sendMessage(message, message.getAllRecipients())
   }

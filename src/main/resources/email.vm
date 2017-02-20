@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+    <TITLE>Menu Planner</TITLE>
+</HEAD>
+
+
+<BODY>
+<CENTER>
+    <B>Esta semana va a comer $lunchesList.size() platos</B>
+
+    <BR/>
+    Este correo ha sido generado automaticamente por la aplicación de generación de menus
+    <BR/>
+    Este es su menu para esta semana:
+
+    <table>
+        #foreach ($lunch in $lunchesList)
+            <tr><td>$lunch.description</td><td>$lunch.ingredients</td></tr>
+        #end
+    </table>
+
+    <I>Disfrute su menu!</I>
+
+</CENTER>
+
+</BODY>
+</HTML>
