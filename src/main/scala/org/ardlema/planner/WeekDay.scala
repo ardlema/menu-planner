@@ -8,3 +8,8 @@ case object Jueves extends WeekDay { val name = "Jueves" }
 case object Viernes extends WeekDay { val name = "Viernes" }
 case object Sabado extends WeekDay { val name = "Sabado" }
 case object Domingo extends WeekDay { val name = "Domingo" }
+
+object WeekDays {
+
+  val weekDays: List[WeekDay] = List(Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
+}
