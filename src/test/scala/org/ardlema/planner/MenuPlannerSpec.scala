@@ -25,6 +25,22 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     plannedLunches should contain oneOf(
       (Lunes, Dish("Garbanzos", "Tomate,Garbanzos", Legumbres)),
       (Lunes, Dish("Lentejas", "Lentejas,Zanahorias", Legumbres)))
+    plannedLunches should contain(Martes, Dish("Arroz", "Arroz", Arroz))
+    plannedLunches should contain oneOf(
+      (Miercoles, Dish("Pisto", "Tomate,Calabacin,Pimiento Rojo", Verduras)),
+      (Miercoles, Dish("Pure de calabaza", "Calabaza,Patatas", Verduras)))
+    plannedLunches should contain oneOf(
+      (Jueves, Dish("Garbanzos", "Tomate,Garbanzos", Legumbres)),
+      (Jueves, Dish("Lentejas", "Lentejas,Zanahorias", Legumbres)))
+    plannedLunches should contain oneOf(
+      (Viernes, Dish("Pisto", "Tomate,Calabacin,Pimiento Rojo", Verduras)),
+      (Viernes, Dish("Pure de calabaza", "Calabaza,Patatas", Verduras)))
+    plannedLunches should contain oneOf (
+      (Sabado, Dish("Carne estofada", "Carne,Patatas", Carne)),
+      (Sabado, Dish("Costillas", "Costillas", Carne)))
+    plannedLunches should contain oneOf(
+      (Domingo, Dish("Carne estofada", "Carne,Patatas", Carne)),
+      (Domingo, Dish("Costillas", "Costillas", Carne)))
   }
 
   //TODO: Wrong path tests!!
