@@ -1,10 +1,10 @@
 package org.ardlema.parser
 
-import java.io.File
-
 import scala.io.Source
+import java.io.File
+import org.ardlema.planner.DishType
 
-case class Dish(description: String, ingredients: String)
+case class Dish(description: String, ingredients: String, dishType: DishType)
 
 trait DishParser[T, A] {
 
@@ -22,6 +22,9 @@ object DishParserFromTextFile extends DishParserFromFile {
   def parse(file: File) = {
     val lines = Source.fromFile(file)
     for { line <- lines.getLines().toList;
-          dishElements = line.split('|')} yield Dish(dishElements(0),dishElements(1))
+          dishElements = line.split('|')} yield Dish(
+            dishElements(0),
+            dishElements(1),
+            DishType.fromString(dishElements(2)))
   }
 }
