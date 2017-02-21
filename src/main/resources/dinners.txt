@@ -5,7 +5,16 @@ Merluza en salsa verde|Merluza, cebolla, caldo de pescado|P
 Merluza a la gallega|Merluza, patatas, cebolla, pimentón|P
 Crema de calabaza|Calabaza,Patatas|V
 Crepes jamon y queso|Harina, Leche, 1 huevo|O
-Hojaldre pollo y brocoli|Masa de hojaldre, brocoli, pollo en trozos, queso cheddar, 1 huevo|O
+Hojaldre pollo y brócoli|Masa de hojaldre, brocoli, pollo en trozos, queso cheddar, 1 huevo|O
 Fingers de pollo|Pollo de corral, pan rallado, huevo|O
 Pizza casera|Harina, levadura fresca|O
 Green smoothie|Manzanas granny smith (2), platano (1), espinacas (80 g), miel (30 g)|D
+Crema de espinacas|Crema de espinacas congelada (mercadona)|V
+Berenjenas con atún|Berenjenas (2), atún, cebolla, tomate frito|V
+Filetes de pollo con pure de patatas|Filetes de pollo, patatas, mantequilla|C
+Quinoa con berenjena|Quinoa, berenjena (1), cebolleta, kikos, canónigos, salsa de soja|CE
+Porrusalda|Bacalao, zanahorias (1), patatas (2)|P
+Sandwich mixto|Jamón de york, queso en lonchas|O
+Hamburguesas|Hamburguesas, tomate natural, queso en lonchas, lechuga|O
+Empanadillas|Pasta de empanadillas, huevo, atún, tomate, aceitunas|O
+Hojaldre de pisto|Masa de hojaldre, pimiento rojo, pimiento verde, calabacin, cebolla, tomate triturado|O
