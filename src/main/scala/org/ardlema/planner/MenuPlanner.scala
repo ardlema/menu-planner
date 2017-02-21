@@ -12,7 +12,7 @@ object MenuPlanner {
                         dishesToBeSelected: List[Dish],
                         typesPerDay: List[(WeekDay, DishType)],
                         dishesSelected: List[(WeekDay, Dish)]): List[(WeekDay, Dish)] = {
-      if (dishesSelected.size == WeekDays.weekDays.size) dishesSelected
+      if (dishesSelected.size == WeekDays.weekDays.size) dishesSelected.reverse
       else {
         val random = Random
         val filteredDishes = dishesToBeSelected.filter(d => d.dishType.identifier.equals(typesPerDay.head._2.identifier))

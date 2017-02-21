@@ -6,8 +6,6 @@ class MenuMailerSpec extends FlatSpec with Matchers {
   "The menu mailer" should "send emails with the menu planning" in {
 
   }
-
-  //TODO: Wrong path tests!!
 }
 
 

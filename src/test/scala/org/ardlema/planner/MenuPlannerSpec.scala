@@ -41,5 +41,27 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
       (Domingo, Dish("Costillas", "Costillas", Carne)))
   }
 
+  it should "maintain the order of the dishes" in {
+    val path = getClass.getResource("/lunchesforaweek.txt").getPath
+    val lunchesFile = new File(path)
+    val lunches = DishParserFromTextFile.parse(lunchesFile)
+    val typesPerDay = List(
+      (Lunes, Legumbres),
+      (Martes, Arroz),
+      (Miercoles, Verduras),
+      (Jueves, Legumbres),
+      (Viernes, Verduras),
+      (Sabado, Carne),
+      (Domingo, Carne))
+    val plannedLunches: List[(WeekDay, Dish)] = MenuPlanner.planAWeek(lunches, typesPerDay)
+
+    plannedLunches(0)._1 should be(Lunes)
+    plannedLunches(1)._1 should be(Martes)
+    plannedLunches(2)._1 should be(Miercoles)
+    plannedLunches(3)._1 should be(Jueves)
+    plannedLunches(4)._1 should be(Viernes)
+    plannedLunches(5)._1 should be(Sabado)
+    plannedLunches(6)._1 should be(Domingo)
+  }
   //TODO: Wrong path tests!!
 }
