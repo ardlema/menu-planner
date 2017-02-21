@@ -6,23 +6,23 @@ import scala.util.Random
 
 object MenuPlanner {
 
-  def planAWeek(lunches: List[Dish], typesPerDay: List[(WeekDay, DishType)]) = {
+  def planAWeek(dishes: List[Dish], typesPerDay: List[(WeekDay, DishType)]) = {
 
     def dishesForAWeek(
-                        lunchesToBeSelected: List[Dish],
+                        dishesToBeSelected: List[Dish],
                         typesPerDay: List[(WeekDay, DishType)],
-                        lunchesSelected: List[(WeekDay, Dish)]): List[(WeekDay, Dish)] = {
-      if (lunchesSelected.size == WeekDays.weekDays.size) lunchesSelected
+                        dishesSelected: List[(WeekDay, Dish)]): List[(WeekDay, Dish)] = {
+      if (dishesSelected.size == WeekDays.weekDays.size) dishesSelected
       else {
         val random = Random
-        val filteredDishes = lunchesToBeSelected.filter(d => d.dishType.identifier.equals(typesPerDay.head._2.identifier))
+        val filteredDishes = dishesToBeSelected.filter(d => d.dishType.identifier.equals(typesPerDay.head._2.identifier))
         val nextDish = random.nextInt(filteredDishes.size)
         val elementSelected = filteredDishes(nextDish)
-        val newLunchesToBeSelected = lunchesToBeSelected.filterNot(d => d.description.equals(elementSelected.description))
-        dishesForAWeek(newLunchesToBeSelected, typesPerDay.tail, ((typesPerDay.head._1, elementSelected) :: lunchesSelected))
+        val newLunchesToBeSelected = dishesToBeSelected.filterNot(d => d.description.equals(elementSelected.description))
+        dishesForAWeek(newLunchesToBeSelected, typesPerDay.tail, ((typesPerDay.head._1, elementSelected) :: dishesSelected))
       }
     }
 
-    dishesForAWeek(lunches, typesPerDay, List())
+    dishesForAWeek(dishes, typesPerDay, List())
   }
 }

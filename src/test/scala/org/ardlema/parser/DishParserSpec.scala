@@ -15,7 +15,7 @@ class DishParserSpec extends FlatSpec with Matchers {
     parsedLunches shouldBe(expectedLunches)
   }
 
-  //TODO: Wrong path tests!!
+  //TODO: Wrong path tests!! 1. Empty lines!!
 }
 
 

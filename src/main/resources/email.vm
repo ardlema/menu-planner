@@ -5,21 +5,58 @@
 
 
 <BODY>
-<CENTER>
-    <B>Esta semana va a comer $lunchesList.size() platos</B>
-
     <BR/>
-    Este correo ha sido generado automaticamente por la aplicación de generación de menus
     <BR/>
-    Este es su menu para esta semana:
-
+    Buenas Rebeca y Alberto!
+    <BR/>
+    <BR/>
+    Este es el menú que he preparado para vosotros para esta semana:
+    <BR/>
+    <BR/>
+    <CENTER>
+    <table>
+        <tr>
+            <th>Lunes</th>
+            <th>Martes</th>
+            <th>Miércoles</th>
+            <th>Jueves</th>
+            <th>Viernes</th>
+            <th>Sábado</th>
+            <th>Domingo</th>
+        </tr>
+        <tr>
+        #foreach ($lunch in $lunchesList)
+            <td>$lunch.description</td>
+        #end
+        </tr>
+        <tr>
+        #foreach ($dinner in $dinnersList)
+            <td>$dinner.description</td>
+        #end
+        </tr>
+    </table>
+    <BR/>
+    <b>
+    Estos son los ingredientes que necesitaríais para elaborar estos platos:
+    </b>
+    <BR/>
+    <BR/>
     <table>
         #foreach ($lunch in $lunchesList)
-            <tr><td>$lunch.description</td><td>$lunch.ingredients</td></tr>
+            <tr>
+                <td>$lunch.description</td>
+                <td>$lunch.ingredients</td>
+            </tr>
+        #end
+        #foreach ($dinner in $dinnersList)
+            <tr>
+                <td>$dinner.description</td>
+                <td>$dinner.ingredients</td>
+            </tr>
         #end
     </table>
-
-    <I>Disfrute su menu!</I>
+    <BR/><BR/>
+    <I>Disfrutad de vuestro menu!</I>
 
 </CENTER>
 

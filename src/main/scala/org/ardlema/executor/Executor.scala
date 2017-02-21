@@ -1,11 +1,13 @@
 package org.ardlema.executor
 
-import java.io.StringWriter
+import java.io.{File, StringWriter}
 import java.util.{ArrayList, HashMap}
 
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.app.VelocityEngine
 import org.ardlema.mailer.MenuMailer
+import org.ardlema.parser.DishParserFromTextFile
+import org.ardlema.planner.MenuPlanner
 
 
 object Executor {
@@ -14,19 +16,31 @@ object Executor {
 
     val ve = new VelocityEngine()
     ve.init()
-    val lunchesList = new ArrayList[HashMap[String, String]]()
+    val lunches = DishParserFromTextFile.parse(getResourceFile("/lunches.txt"))
+    val dinners = DishParserFromTextFile.parse(getResourceFile("/dinners.txt"))
+
+    val plannedLunches = MenuPlanner.planAWeek(lunches, LunchesPerDay.lunchesPerDay)
+    val plannedDinners = MenuPlanner.planAWeek(dinners, LunchesPerDay.dinnersPerDay)
+
     val context = new VelocityContext()
+    val lunchesList = new ArrayList[HashMap[String, String]]()
+    val dinnersList = new ArrayList[HashMap[String, String]]()
     context.put("lunchesList", lunchesList)
+    context.put("dinnersList", dinnersList)
 
-    val map1 = new HashMap[String, String]()
-    map1.put("description", "Garbanzos con tomate")
-    map1.put("ingredients", "Tomate,Garbanzos")
-    lunchesList.add(map1)
+    for (lunch <- plannedLunches) {
+      val lunchesMap = new HashMap[String, String]()
+      lunchesMap.put("description", lunch._2.description)
+      lunchesMap.put("ingredients", lunch._2.ingredients)
+      lunchesList.add(lunchesMap)
+    }
 
-    val map2 = new HashMap[String, String]()
-    map2.put("description", "Arroz con pollo")
-    map2.put("ingredients", "Arroz,Pollo")
-    lunchesList.add(map2)
+    for (dinner <- plannedDinners) {
+      val dinnersMap = new HashMap[String, String]()
+      dinnersMap.put("description", dinner._2.description)
+      dinnersMap.put("ingredients", dinner._2.ingredients)
+      dinnersList.add(dinnersMap)
+    }
 
     val writer = new StringWriter()
     val template = ve.getTemplate("/src/main/resources/email.vm")
@@ -34,5 +48,10 @@ object Executor {
     val body = writer.toString
 
     MenuMailer.sendMessage(body)
+  }
+
+  def getResourceFile(path: String) = {
+    val resourcePath = getClass.getResource(path).getPath
+    new File(resourcePath)
   }
 }
