@@ -6,7 +6,7 @@ object LunchesPerDay {
 
   val lunchesPerDay = List(
     (Lunes, Legumbres),
-    (Martes, Arroz),
+    (Martes, Cereales),
     (Miercoles, Verduras),
     (Jueves, Legumbres),
     (Viernes, Pasta),

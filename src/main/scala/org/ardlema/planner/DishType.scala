@@ -9,7 +9,7 @@ object DishType {
 
   def fromString(identifier: String): DishType = identifier match {
     case "L" => Legumbres
-    case "A" => Arroz
+    case "CE" => Cereales
     case "V" => Verduras
     case "C" => Carne
     case "P" => Pescado
@@ -19,7 +19,7 @@ object DishType {
   }
 }
 case object Legumbres extends DishType { val identifier = "L" }
-case object Arroz extends DishType { val identifier = "A" }
+case object Cereales extends DishType { val identifier = "CE" }
 case object Verduras extends DishType { val identifier = "V" }
 case object Carne extends DishType { val identifier = "C" }
 case object Pescado extends DishType { val identifier = "P" }

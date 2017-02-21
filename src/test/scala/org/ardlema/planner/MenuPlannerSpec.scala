@@ -12,7 +12,7 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     val lunches = DishParserFromTextFile.parse(lunchesFile)
     val typesPerDay = List(
       (Lunes, Legumbres),
-      (Martes, Arroz),
+      (Martes, Cereales),
       (Miercoles, Verduras),
       (Jueves, Legumbres),
       (Viernes, Verduras),
@@ -23,7 +23,7 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     plannedLunches should contain oneOf(
       (Lunes, Dish("Garbanzos", "Tomate,Garbanzos", Legumbres)),
       (Lunes, Dish("Lentejas", "Lentejas,Zanahorias", Legumbres)))
-    plannedLunches should contain(Martes, Dish("Arroz", "Arroz", Arroz))
+    plannedLunches should contain(Martes, Dish("Arroz", "Arroz", Cereales))
     plannedLunches should contain oneOf(
       (Miercoles, Dish("Pisto", "Tomate,Calabacin,Pimiento Rojo", Verduras)),
       (Miercoles, Dish("Pure de calabaza", "Calabaza,Patatas", Verduras)))
@@ -47,7 +47,7 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     val lunches = DishParserFromTextFile.parse(lunchesFile)
     val typesPerDay = List(
       (Lunes, Legumbres),
-      (Martes, Arroz),
+      (Martes, Cereales),
       (Miercoles, Verduras),
       (Jueves, Legumbres),
       (Viernes, Verduras),

@@ -1,5 +1,5 @@
 Garbanzos|Tomate,Garbanzos|L
-Arroz|Arroz|A
+Arroz|Arroz|CE
 Pisto|Tomate,Calabacin,Pimiento Rojo|V
 Lentejas|Lentejas,Zanahorias|L
 Pure de calabaza|Calabaza,Patatas|V
