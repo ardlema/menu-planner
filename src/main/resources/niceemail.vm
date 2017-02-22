@@ -37,7 +37,7 @@
             <td align="center" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#000000; font-size:24px; padding-bottom:5px;"><i>Buenas Rebeca y Alberto!
               </i>
             <tr>
-            <td align="left" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#000000; font-size:15px;">Este es el menú que he preparado para vosotros para esta semana: </div>
+            <td align="left" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; color:#000000; font-size:15px;">Este es el menú que he preparado para vosotros para esta semana:
                 <br/><br/>
 
             <table>
@@ -63,7 +63,7 @@
             </table>
             <BR/>
 
-
+          <table>
           #foreach ($lunch in $lunchesList)
               <tr>
                   <td>$lunch.description</td>
@@ -76,13 +76,10 @@
                   <td>$dinner.ingredients</td>
               </tr>
           #end
+              </table><br/><br/><div style="color:#b30467; font-size:15px;"><b>Disfrutad vuestro menú!</b></div></div>
 
           <br/><br/>
-          <tr>
-            <td align="left" valign="middle" style="font-family:Georgia, 'Times New Roman', Times, serif; font-size:12px; color:#000000;">
-            <div style="color:#b30467; font-size:15px;"><b>Disfrutad vuestro menú!</b></div>
-            </td>
-          </tr>
+
         </table></td>
       </tr>
     </table>
