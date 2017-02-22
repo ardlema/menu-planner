@@ -3,6 +3,7 @@ package org.ardlema.executor
 import java.io.{File, StringWriter}
 import java.util.{ArrayList, HashMap}
 
+import com.typesafe.scalalogging.LazyLogging
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.app.VelocityEngine
 import org.ardlema.mailer.MenuMailer
@@ -10,18 +11,20 @@ import org.ardlema.parser.DishParserFromTextFile
 import org.ardlema.planner.MenuPlanner
 
 
-object Executor {
+object Executor extends LazyLogging {
 
   def main(args: Array[String]): Unit = {
 
+    logger.info("Starting the menu planner execution...")
+    //TODO: Fix me!! Pick the path from a command line parameter!!!
+    val lunchesFilePath = "/home/arodriguez/dev/menu-planner/src/main/resources/lunches.txt"
+    val dinnersFilePath = "/home/arodriguez/dev/menu-planner/src/main/resources/dinners.txt"
     val ve = new VelocityEngine()
     ve.init()
-    val lunches = DishParserFromTextFile.parse(getResourceFile("/lunches.txt"))
-    val dinners = DishParserFromTextFile.parse(getResourceFile("/dinners.txt"))
-
+    val lunches = DishParserFromTextFile.parse(new File(lunchesFilePath))
+    val dinners = DishParserFromTextFile.parse(new File(dinnersFilePath))
     val plannedLunches = MenuPlanner.planAWeek(lunches, LunchesPerDay.lunchesPerDay)
     val plannedDinners = MenuPlanner.planAWeek(dinners, LunchesPerDay.dinnersPerDay)
-
     val context = new VelocityContext()
     val lunchesList = new ArrayList[HashMap[String, String]]()
     val dinnersList = new ArrayList[HashMap[String, String]]()
@@ -48,10 +51,5 @@ object Executor {
     val body = writer.toString
 
     MenuMailer.sendMessage(body)
-  }
-
-  def getResourceFile(path: String) = {
-    val resourcePath = getClass.getResource(path).getPath
-    new File(resourcePath)
   }
 }
