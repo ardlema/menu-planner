@@ -46,7 +46,7 @@ object Executor extends LazyLogging {
     }
 
     val writer = new StringWriter()
-    val template = ve.getTemplate("/src/main/resources/email.vm")
+    val template = ve.getTemplate("/src/main/resources/niceemail.vm")
     template.merge(context, writer)
     val body = writer.toString
 
