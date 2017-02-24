@@ -14,7 +14,6 @@ object DishType {
     case "C" => Carne
     case "P" => Pescado
     case "D" => Detox
-    case "PA" => Pasta
     case "H" => Huevos
     case "O" => Otros
   }
@@ -25,6 +24,5 @@ case object Verduras extends DishType { val identifier = "V" }
 case object Carne extends DishType { val identifier = "C" }
 case object Pescado extends DishType { val identifier = "P" }
 case object Detox extends DishType { val identifier = "D" }
-case object Pasta extends DishType { val identifier = "PA" }
 case object Huevos extends DishType { val identifier = "H" }
 case object Otros extends DishType { val identifier = "O" }

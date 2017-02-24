@@ -19,16 +19,17 @@ Sandwich mixto|Jamón de york, queso en lonchas|O
 Hamburguesas|Hamburguesas, tomate natural, queso en lonchas, lechuga|O
 Empanadillas|Pasta de empanadillas, huevo, atún, tomate, aceitunas|O
 Hojaldre de pisto|Masa de hojaldre, pimiento rojo, pimiento verde, calabacin, cebolla, tomate triturado|O
-Cazuelita de calabacin y queso|Calabacín, queso en lonchas, tomate frito, huevos|V
+Cazuelita de calabacin y queso|Calabacín, queso en lonchas, tomate frito, huevos|H
 Crema de verduras|Calabacín, puerro, calabaza, cebolla|V
 Ensalada de frutas|Rucula, manzana, mango, tomate natural, nueces, salsa de yogur|D
 Ensalada de espinacas|Espinacas, tomate, piñones, almendras, champiñones, queso fresco, zumo de limón|D
 Sepia a la plancha|Sepia, limón, ajo, perejil, cuscus|P
 Sepia con tomate|Sepia, tomate, rellenar!!!!|P
-Revuelto de gambas|Gambas, huevos, ajos tiernos, tostada de pan|O
-Tortilla francesa|Huevos, quesitos, pavo|O
+Revuelto de gambas|Gambas, huevos, ajos tiernos, tostada de pan|H
+Tortilla francesa|Huevos, quesitos, pavo|H
 Fajitas de pollo|Pollo, fajitas, lechuga, tomate, guacamole, queso rallado, cilantro|O
 Kebab con pan naan|Kebab mercadona congelado, harina, aceite girasol, lechuga, tomate, hummus mercadona, cilantro|O
 Vuelta y vuelta con ensalada|Filetes de pavo, ensalada preparada, vinagre de módena, naranja|C
 Crema de calabacín|Patatas, cebolla, calabacín|V
 Lenguados con berenjena a la plancha|Lenguados, berenjenas|P
+Sopa|Bandeja de verduras, hueso jamón, pasta de sopa|V

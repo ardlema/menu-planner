@@ -2,12 +2,14 @@ package org.ardlema.planner
 
 import org.ardlema.parser.Dish
 
+import scala.annotation.tailrec
 import scala.util.Random
 
 object MenuPlanner {
 
   def planAWeek(dishes: List[Dish], typesPerDay: List[(WeekDay, DishType)]) = {
 
+    @tailrec
     def dishesForAWeek(
                         dishesToBeSelected: List[Dish],
                         typesPerDay: List[(WeekDay, DishType)],
