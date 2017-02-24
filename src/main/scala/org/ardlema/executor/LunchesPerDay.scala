@@ -10,7 +10,7 @@ object LunchesPerDay {
     (Miercoles, Verduras),
     (Jueves, Legumbres),
     (Viernes, Pasta),
-    (Sabado, Carne),
+    (Sabado, Otros),
     (Domingo, Carne))
 
   val dinnersPerDay = List(
