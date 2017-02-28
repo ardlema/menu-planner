@@ -15,7 +15,6 @@ object Executor extends LazyLogging {
     val commandLineParams = CommandLineParser.parse(args)
     if (commandLineParams.isDefined) {
       logger.info("Command line parameters parsed fine")
-      logger.info("Starting the menu planner execution...")
       val lunchesFilePath = s"""${commandLineParams.get.rootPath}${DishParserFromTextFile.lunchesTextFile}"""
       val dinnersFilePath = s"""${commandLineParams.get.rootPath}${DishParserFromTextFile.dinnersTextFile}"""
       val lunches = DishParserFromTextFile.parse(new File(lunchesFilePath))
