@@ -3,11 +3,14 @@ package org.ardlema.mailer
 import javax.mail.{Session, _}
 import javax.mail.internet._
 
-object MenuMailer {
+import com.typesafe.scalalogging.LazyLogging
+import org.ardlema.parser.CommandLineParams
 
-  val sender = "***@gmail.com"
-  val recipientAlberto = "****@gmail.com"
-  val recipientRebeca = "****@gmail.com"
+object MenuMailer extends LazyLogging {
+
+  /*val sender = "ardlema@gmail.com"
+  val recipientAlberto = "ardlema@gmail.com"
+  val recipientRebeca = "rbkmena@gmail.com"*/
   val host = "smtp.gmail.com"
   val port = "587"
 
@@ -22,16 +25,6 @@ object MenuMailer {
   // Create a default MimeMessage object.
   val message = new MimeMessage(session)
 
-  // Set From: header field of the header.
-  message.setFrom(new InternetAddress(sender))
-
-  // Set To: header field of the header.
-  message.addRecipient(Message.RecipientType.TO,
-    new InternetAddress(recipientAlberto))
-  message.addRecipient(Message.RecipientType.TO,
-    new InternetAddress(recipientRebeca))
-
-
   // Set Subject: header field
   message.setSubject("Menu Planner - Este es su menu para esta semana")
 
@@ -39,10 +32,12 @@ object MenuMailer {
 
 
   // Send message
-  def sendMessage(body: String) {
+  def sendMessage(body: String, parameters: CommandLineParams) {
     val tr = session.getTransport("smtp")
     message.setContent(body, "text/html")
-    tr.connect(sender, "****")
+    message.setFrom(new InternetAddress(parameters.sender))
+    tr.connect(parameters.sender, parameters.password)
+    for (recipient <- parameters.recipients) message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient))
     tr.sendMessage(message, message.getAllRecipients())
   }
 }
