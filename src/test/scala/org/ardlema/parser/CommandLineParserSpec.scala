@@ -10,14 +10,15 @@ class CommandLineParserSpec extends FlatSpec with Matchers {
     val recipient1 = "manuela@gmail.com"
     val recipient2 = "ramona@yahoo.com"
     val expectedLunches: Array[String] = Array(
-      s"""sender=$senderValue""",
-      s"""password=$senderValue""",
-      s"""recipients=$recipient1,$recipient2""")
+      s"""${CommandLineParser.senderKey}=$senderValue""",
+      s"""${CommandLineParser.passwordKey}=$passwordValue""",
+      s"""${CommandLineParser.recipientsKey}=$recipient1,$recipient2""")
     val commandLineParams = CommandLineParser.parse(expectedLunches)
 
-    commandLineParams.sender shouldBe(senderValue)
-    commandLineParams.password shouldBe(passwordValue)
-    commandLineParams.recipients should contain theSameElementsAs(List(recipient1, recipient2))
+    commandLineParams.isDefined shouldBe(true)
+    commandLineParams.get.sender shouldBe(senderValue)
+    commandLineParams.get.password shouldBe(passwordValue)
+    commandLineParams.get.recipients should contain theSameElementsAs(List(recipient1, recipient2))
   }
 }
 
@@ -25,7 +26,17 @@ case class CommandLineParams(sender: String, password: String, recipients: List[
 
 object CommandLineParser {
 
-  def parse(params: Array[String]): CommandLineParams = {
-    CommandLineParams("", "", List())
+  //TODO: Pick these values from properties?
+  val senderKey = "sender"
+  val passwordKey = "password"
+  val recipientsKey = "recipients"
+
+  def parse(params: Array[String]): Option[CommandLineParams] = {
+    val paramsToMap = params.map(_.split("=") match { case Array(k, v) => k->v } ).toMap
+    for {
+      sender <- paramsToMap.get(senderKey)
+      password <- paramsToMap.get(passwordKey)
+      recipients <- paramsToMap.get(recipientsKey)
+    } yield CommandLineParams(sender, password, recipients.split(",").toList)
   }
 }
