@@ -1,12 +1,13 @@
 package org.ardlema.parser
 
-case class CommandLineParams(sender: String, password: String, recipients: List[String])
+case class CommandLineParams(sender: String, password: String, recipients: List[String], rootPath: String)
 
 object CommandLineParser {
   //TODO: Pick these values from properties?
   val senderKey = "sender"
   val passwordKey = "password"
   val recipientsKey = "recipients"
+  val rootPathKey = "rootpath"
 
   def parse(params: Array[String]): Option[CommandLineParams] = {
     val paramsToMap = params.map(_.split("=") match { case Array(k, v) => k->v } ).toMap
@@ -14,7 +15,8 @@ object CommandLineParser {
       sender <- paramsToMap.get(senderKey)
       password <- paramsToMap.get(passwordKey)
       recipients <- paramsToMap.get(recipientsKey)
-    } yield CommandLineParams(sender, password, recipients.split(",").toList)
+      rootPath <- paramsToMap.get(rootPathKey)
+    } yield CommandLineParams(sender, password, recipients.split(",").toList, rootPath)
   }
 }
 

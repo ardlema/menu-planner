@@ -18,6 +18,9 @@ trait DishParserFromFile extends DishParser[File, Dish] {
 
 object DishParserFromTextFile extends DishParserFromFile {
 
+  val lunchesTextFile = "lunches.txt"
+  val dinnersTextFile = "dinners.txt"
+
   //TODO: Look for more functional ways on doing this and error handling!!!
   def parse(file: File) = {
     val lines = Source.fromFile(file)
