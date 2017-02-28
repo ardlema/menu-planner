@@ -51,4 +51,11 @@ class CommandLineParserSpec extends FlatSpec with Matchers {
 
     commandLineParams.isDefined shouldBe(false)
   }
+
+  it should "return None when receives a parameter without equals" in {
+    val expectedLunches: Array[String] = Array("param1")
+    val commandLineParams = CommandLineParser.parse(expectedLunches)
+
+    commandLineParams.isDefined shouldBe(false)
+  }
 }
