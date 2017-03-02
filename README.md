@@ -46,8 +46,5 @@ aplicación todos los jueves a las 17:15:
   
 ## TODO
 
-* Permitir definir la localización de los ficheros de texto via parámetro de linea de comandos
-* Permitir definir correo electrónico y password de envio y correos electrónicos de recepción a través de
- parámetros de linea de comandos
 * Evitar incluir platos seleccionados la semana previa 
 
