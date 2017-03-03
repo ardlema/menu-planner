@@ -2,7 +2,12 @@ package org.ardlema.parser
 
 import com.typesafe.scalalogging.LazyLogging
 
-case class CommandLineParams(sender: String, password: String, recipients: List[String], rootPath: String)
+case class CommandLineParams(
+    sender: String,
+    password: String,
+    recipients: List[String],
+    rootPath: String,
+    previousRootPath: String)
 
 object CommandLineParser extends LazyLogging {
   //TODO: Pick these values from properties?
@@ -10,6 +15,7 @@ object CommandLineParser extends LazyLogging {
   val passwordKey = "password"
   val recipientsKey = "recipients"
   val rootPathKey = "rootpath"
+  val previousRootPathKey = "previousrootpath"
 
   def parse(params: Array[String]): Option[CommandLineParams] = {
     val paramsToMap = params.map(_.split("=") match {
@@ -21,7 +27,8 @@ object CommandLineParser extends LazyLogging {
       password <- paramsFiltered.get(passwordKey)
       recipients <- paramsFiltered.get(recipientsKey)
       rootPath <- paramsFiltered.get(rootPathKey)
-    } yield CommandLineParams(sender, password, recipients.split(",").toList, rootPath)
+      previousRootPath <- paramsFiltered.get(previousRootPathKey)
+    } yield CommandLineParams(sender, password, recipients.split(",").toList, rootPath, previousRootPath)
   }
 }
 
