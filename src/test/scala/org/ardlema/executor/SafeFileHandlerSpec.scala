@@ -21,11 +21,3 @@ class SafeFileHandlerSpec extends FlatSpec with Matchers {
     file.isDefined should be(false)
   }
 }
-
-object SafeFileHandler {
-
-  def getFile(path: String): Option[File] = {
-    val file = new File(path)
-    if (file.exists()) Some(file) else None
-  }
-}
