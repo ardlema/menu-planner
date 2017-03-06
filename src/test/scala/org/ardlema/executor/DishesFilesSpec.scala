@@ -1,8 +1,6 @@
 package org.ardlema.executor
 
-import java.io.File
-
-import org.ardlema.parser.{CommandLineParams, CommandLineParser, DishParserFromTextFile}
+import org.ardlema.parser.CommandLineParser
 import org.scalatest.{FlatSpec, Matchers}
 
 class DishesFilesSpec extends FlatSpec with Matchers {
@@ -30,7 +28,7 @@ class DishesFilesSpec extends FlatSpec with Matchers {
     dishesFiles.previousDinnersFile.isDefined should be(true)
   }
 
-  "it" should "return None when the previous files does not exist" in {
+  it should "return None when the previous files does not exist" in {
     val senderValue = "amparo@gmail.com"
     val passwordValue = "12345"
     val recipient1 = "manuela@gmail.com"

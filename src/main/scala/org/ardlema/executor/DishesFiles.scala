@@ -16,7 +16,7 @@ object DishesFiles {
     val lunchesFilePath = s"""${commandLineParams.rootPath}${DishParserFromTextFile.lunchesTextFile}"""
     val previousLunchesFilePath = s"""${commandLineParams.previousRootPath}${DishParserFromTextFile.lunchesTextFile}"""
     val dinnersFilePath = s"""${commandLineParams.rootPath}${DishParserFromTextFile.dinnersTextFile}"""
-    val previousDinnersFilePath = s"""${commandLineParams.rootPath}${DishParserFromTextFile.dinnersTextFile}"""
+    val previousDinnersFilePath = s"""${commandLineParams.previousRootPath}${DishParserFromTextFile.dinnersTextFile}"""
     val lunchesFile = SafeFileHandler.getFile(lunchesFilePath)
     val dinnersFile = SafeFileHandler.getFile(dinnersFilePath)
     val previousLunchesFile = SafeFileHandler.getFile(previousLunchesFilePath)
