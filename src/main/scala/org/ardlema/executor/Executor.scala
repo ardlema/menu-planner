@@ -1,7 +1,5 @@
 package org.ardlema.executor
 
-import java.io.File
-
 import com.typesafe.scalalogging.LazyLogging
 import org.ardlema.mailer.{MenuMailer, TemplateGenerator}
 import org.ardlema.parser.{CommandLineParser, DishParserFromTextFile}
@@ -15,18 +13,30 @@ object Executor extends LazyLogging {
     val commandLineParams = CommandLineParser.parse(args)
     if (commandLineParams.isDefined) {
       logger.info("Command line parameters parsed fine")
-      val lunchesFilePath = s"""${commandLineParams.get.rootPath}${DishParserFromTextFile.lunchesTextFile}"""
-      val dinnersFilePath = s"""${commandLineParams.get.rootPath}${DishParserFromTextFile.dinnersTextFile}"""
-      val lunches = DishParserFromTextFile.parse(new File(lunchesFilePath))
-      val dinners = DishParserFromTextFile.parse(new File(dinnersFilePath))
-      val plannedLunches = MenuPlanner.planAWeek(lunches, LunchesPerDay.lunchesPerDay)
-      val plannedDinners = MenuPlanner.planAWeek(dinners, LunchesPerDay.dinnersPerDay)
-      logger.info("Generating email template...")
-      val mailBody = TemplateGenerator.generateTemplate(plannedLunches, plannedDinners)
-
-      MenuMailer.sendMessage(mailBody, commandLineParams.get)
+      val dishes = DishesFiles.getLunchesFile(commandLineParams.get)
+        if (bothDinnersAndLunchesFileExist(dishes)) {
+          val lunches = DishParserFromTextFile.parse(dishes.lunchesFile.get)
+          val dinners = DishParserFromTextFile.parse(dishes.dinnersFile.get)
+          val previousLunches = if (dishes.previousLunchesFile.isDefined) {
+            Some(DishParserFromTextFile.parse(dishes.previousLunchesFile.get))
+          } else None
+          val previousDinners = if (dishes.previousDinnersFile.isDefined) {
+            Some(DishParserFromTextFile.parse(dishes.previousDinnersFile.get))
+          } else None
+          val plannedLunches = MenuPlanner.planAWeek(lunches, LunchesPerDay.lunchesPerDay, previousLunches)
+          val plannedDinners = MenuPlanner.planAWeek(dinners, LunchesPerDay.dinnersPerDay, previousDinners)
+          logger.info("Generating email template...")
+          val mailBody = TemplateGenerator.generateTemplate(plannedLunches, plannedDinners)
+          MenuMailer.sendMessage(mailBody, commandLineParams.get)
+      } else {
+          logger.error("Dinners and lunches files not found!!")
+      }
     } else {
       logger.error("Wrong command line parameters. Please review the list of required params!!")
     }
+  }
+
+  def bothDinnersAndLunchesFileExist(dishes: DishesFiles): Boolean = {
+    dishes.lunchesFile.isDefined && dishes.dinnersFile.isDefined
   }
 }
