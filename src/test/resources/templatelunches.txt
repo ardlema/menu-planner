@@ -1,0 +1,21 @@
+Garbanzos con tomate|Tomate triturado, garbanzos de bote (800 g), cebolla|L
+Ensalada de arroz|Arroz, tomate natural, atún, aceitunas, palitos de cangrejo|CE
+Pisto|Tomate, calabacin, pimiento rojo, pimiento verde, cebolla|V
+Lentejas|Lentejas, zanahorias, hueso de jamón, cebolla, pimiento verde, pimentón|L
+Guisantes con jamón|Guisantes en lata, jamón en taquitos, cebolleta|V
+Patatas con costillas|Patatas, costillas adobadas, cebolla, pimiento verde|O
+Albóndigas|Carne picada mixta (500 gr.), cebolla, harina, huevo|C
+Ensalada de pasta|Pasta, tomate natural, atún, palitos de cangrejo, aceitunas|CE
+Pasta con tomate|Pasta, tomate frito, cebolleta|CE
+Cous-cous con palitos de cangrejo|Cous-cous, palitos de cangrejo, cebolleta|CE
+Pollo en salsa de verduras|Contramuslos de pollo deshuesados, berenjena (1), pimiento rojo, pimiento verde, champiñones, zanahorias, calabacin (1)|O
+Arroz thai|Arroz jazmin, piña, filetes de pollo, palitos de cangrejo, salsa de soja|CE
+Ensalada de espinacas y pasta|Pasta gorda, espinacas, champiñones, ajo, bacon, mostaza, vinagre de módena|P
+Ensalada verde|Canónigos, aguacate, esparragos blancos, queso fresco desnatado, zanahoria cruda, pipas de calabaza, zumo de limón|V
+Brócoli salteado|Brócoli, calabaza, cebolleta|V
+Alubias salteadas|Alubias, cebolleta, berenjenas, piñones, pimentón|L
+Quinoa con berenjena|Quinoa, berenjena (1), cebolleta, kikos, canónigos, salsa de soja|CE
+Pasta con carne picada|Pasta, carne picada, tomate triturado, cebolla|CE
+Marmitako|Patatas, atun, tomate triturado, pimiento rojo, pimiento verde|O
+Noddles chinos|Noodles, langostinos, setas shitake, salsa teriyaki o similar, cebolleta/cebolla roja, brocoli|O
+Lasagna de carne|Carne picada, placas de lasagna, zanahorias, champiñones, tomate triturado, harina, leche|O

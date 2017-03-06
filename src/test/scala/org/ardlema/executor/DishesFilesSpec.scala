@@ -10,8 +10,10 @@ class DishesFilesSpec extends FlatSpec with Matchers {
     val passwordValue = "12345"
     val recipient1 = "manuela@gmail.com"
     val recipient2 = "ramona@yahoo.com"
-    val dishesRootPath = "/home/arodriguez/dev/menu-planner/src/test/resources/"
-    val previousDishesRootPath = "/home/arodriguez/dev/menu-planner/src/test/resources/previous/"
+    val dishesRelativeRootPath = "/previous/"
+    val previousDishesRelativeRootPath = "/previous/"
+    val dishesRootPath = getClass.getResource(dishesRelativeRootPath).getPath
+    val previousDishesRootPath = getClass.getResource(previousDishesRelativeRootPath).getPath
     val expectedLunches: Array[String] = Array(
       s"""${CommandLineParser.senderKey}=$senderValue""",
       s"""${CommandLineParser.passwordKey}=$passwordValue""",
@@ -33,8 +35,10 @@ class DishesFilesSpec extends FlatSpec with Matchers {
     val passwordValue = "12345"
     val recipient1 = "manuela@gmail.com"
     val recipient2 = "ramona@yahoo.com"
-    val dishesRootPath = "/home/arodriguez/dev/menu-planner/src/test/resources/"
-    val previousDishesRootPath = "/home/arodriguez/dev/menu-planner/src/test/resources/previousfake/"
+    val dishesRelativeRootPath = "/previous/"
+    val previousFakeDishesRelativeRootPath = "/previousfake/"
+    val dishesRootPath = getClass.getResource(dishesRelativeRootPath).getPath
+    val previousDishesRootPath = getClass.getResource(previousFakeDishesRelativeRootPath).getPath
     val expectedLunches: Array[String] = Array(
       s"""${CommandLineParser.senderKey}=$senderValue""",
       s"""${CommandLineParser.passwordKey}=$passwordValue""",
