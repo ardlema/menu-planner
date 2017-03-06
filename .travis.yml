@@ -1,0 +1,10 @@
+language: scala
+
+script: "sbt ++$TRAVIS_SCALA_VERSION coverage test coverageReport"
+
+scala:
+   - 2.11.8
+   - 2.12.1
+
+jdk:
+   - oraclejdk8
