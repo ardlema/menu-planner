@@ -1,7 +1,5 @@
 package org.ardlema.executor
 
-import java.io.File
-
 import org.scalatest.{FlatSpec, Matchers}
 
 class SafeFileHandlerSpec extends FlatSpec with Matchers {
@@ -14,10 +12,8 @@ class SafeFileHandlerSpec extends FlatSpec with Matchers {
   }
 
   "it" should "return None when the file does not exist" in {
-    val lunchesFilePath = getClass.getResource("/lunchesfake.txt").getPath
-    val file = SafeFileHandler.getFile(lunchesFilePath)
+    val file = SafeFileHandler.getFile("/lunchesfake.txt")
 
-    val file2 = new File(lunchesFilePath).exists()
     file.isDefined should be(false)
   }
 }
