@@ -19,7 +19,9 @@ Donde tipo del plato debe ser uno de los siguientes valores:
   * H => Huevos
   * O => Otros
 
-Con el proyecto se incluyen un par de ficheros de texto con ejemplos de platos para comidas y cenas.  
+Con el proyecto se incluyen un par de ficheros de texto con ejemplos de platos para comidas y cenas.
+
+[![Build Status](https://travis-ci.org/ardlema/menu-planner.svg?branch=master)](https://travis-ci.org/ardlema/menu-planner)
 
 ## Probando y ejecutando la aplicación
   
