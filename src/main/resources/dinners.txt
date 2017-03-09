@@ -33,3 +33,4 @@ Vuelta y vuelta con ensalada|Filetes de pavo, ensalada preparada, vinagre de mó
 Crema de calabacín|Patatas, cebolla, calabacín|V
 Lenguados con berenjena a la plancha|Lenguados, berenjenas|P
 Sopa|Bandeja de verduras, hueso jamón, pasta de sopa|V
+Tortilla de brocoli|Brocoli, huevos, bacon, cebolleta|H
