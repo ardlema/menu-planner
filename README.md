@@ -21,7 +21,7 @@ Donde tipo del plato debe ser uno de los siguientes valores:
 
 Con el proyecto se incluyen un par de ficheros de texto con ejemplos de platos para comidas y cenas.
 
-[![Build Status](https://travis-ci.org/ardlema/menu-planner.svg?branch=master)](https://travis-ci.org/ardlema/menu-planner)
+[![Build Status](https://travis-ci.org/ardlema/menu-planner.svg?branch=master)](https://travis-ci.org/ardlema/menu-planner)[![Coverage Status](https://coveralls.io/repos/github/ardlema/menu-planner/badge.svg?branch=master)](https://coveralls.io/github/ardlema/menu-planner?branch=master)
 
 ## Probando y ejecutando la aplicación
   
@@ -41,7 +41,7 @@ Para ejecutar la aplicación:
   
 
 ```
-java -jar ./target/scala-2.11/menu-planner-assembly-0.0.1.jar sender=user1@gmail.com password=12345 recipients=user2@gmail.com rootpath=/home/user/menu-planner/ org.ardlema.executor.Executor  
+java -jar ./target/scala-2.11/menu-planner-assembly-0.0.1.jar sender=user1@gmail.com password=12345 recipients=user2@gmail.com,user3@gmail.com rootpath=/home/user/menu-planner/ previousrootpath=/home/arodriguez/dev/menu-planner/src/main/resources/previous/ org.ardlema.executor.Executor  
 ```
 
 
@@ -51,10 +51,6 @@ ser llamado a través de un cron job. A continuación se incluye un ejemplo de c
 aplicación todos los jueves a las 17:15:
 
 ```
-15 17 * * 4 bash /home/arodriguez/dev/menu-planner/mailscheduler.sh >> /home/arodriguez/output.log 2>&1
+15 17 * * 4 bash /home/user/dev/menu-planner/mailscheduler.sh >> /home/user/menu-planner-output.log 2>&1
 ``` 
-  
-## TODO
-
-* Evitar incluir platos seleccionados la semana previa 
 
