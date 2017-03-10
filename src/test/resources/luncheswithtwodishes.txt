@@ -1,0 +1,14 @@
+Garbanzos|Tomate,Garbanzos|L
+Arroz|Arroz|CE
+Pisto|Tomate,Calabacin,Pimiento Rojo|V
+Lentejas|Lentejas,Zanahorias|L
+Pure de calabaza|Calabaza,Patatas|V
+Carne estofada|Carne,Patatas|C
+Costillas|Costillas|C
+Quinoa|Quinoa, tomate|L
+Cereal raro|Raruno|CE
+Menestra|Pimiento rojo, pimiento verde|V
+Judias|Judias,chorizo|L
+Guisantes|Guisantes, jamon|V
+Filetes|Filetes de ternera|C
+Chuletas|Chuletas|C

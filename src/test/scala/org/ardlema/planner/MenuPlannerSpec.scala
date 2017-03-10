@@ -63,5 +63,50 @@ class MenuPlannerSpec extends FlatSpec with Matchers {
     plannedLunches(5)._1 should be(Sabado)
     plannedLunches(6)._1 should be(Domingo)
   }
+
+  it should "not include dishes from the previous week" in {
+    val previousLunchesForAWeekPath = getClass.getResource("/lunchesforaweek.txt").getPath
+    val lunchesWithTwoDishesPath = getClass.getResource("/luncheswithtwodishes.txt").getPath
+    val previousLunchesFile = new File(previousLunchesForAWeekPath)
+    val lunchesFile = new File(lunchesWithTwoDishesPath)
+    val previousLunches = DishParserFromTextFile.parse(previousLunchesFile)
+    val lunches = DishParserFromTextFile.parse(lunchesFile)
+    val typesPerDay = List(
+      (Lunes, Legumbres),
+      (Martes, Cereales),
+      (Miercoles, Verduras),
+      (Jueves, Legumbres),
+      (Viernes, Verduras),
+      (Sabado, Carne),
+      (Domingo, Carne))
+    val plannedLunches = MenuPlanner.planAWeek(lunches, typesPerDay, Some(previousLunches))
+
+    plannedLunches should contain noneOf (
+      (Lunes, Dish("Garbanzos","Tomate,Garbanzos", Legumbres)),
+      (Jueves, Dish("Lentejas","Lentejas,Zanahorias", Legumbres)))
+    plannedLunches should contain oneOf (
+      (Lunes, Dish("Quinoa","Quinoa, tomate", Legumbres)),
+      (Jueves, Dish("Quinoa","Quinoa, tomate", Legumbres)))
+    plannedLunches should not contain (Martes, Dish("Arroz","Arroz", Cereales))
+    plannedLunches should contain (Martes, Dish("Cereal raro","Raruno", Cereales))
+    plannedLunches should contain noneOf (
+      (Miercoles, Dish("Pisto","Tomate,Calabacin,Pimiento Rojo", Verduras)),
+      (Miercoles, Dish("Pure de calabaza","Calabaza,Patatas", Verduras)))
+    plannedLunches should contain oneOf (
+      (Miercoles, Dish("Menestra","Pimiento rojo, pimiento verde", Verduras)),
+      (Miercoles, Dish("Guisantes","Guisantes, jamon", Verduras)))
+    plannedLunches should contain oneOf (
+      (Lunes, Dish("Judias","Judias,chorizo", Legumbres)),
+      (Jueves, Dish("Judias","Judias,chorizo", Legumbres)))
+    plannedLunches should contain oneOf (
+      (Miercoles, Dish("Guisantes","Guisantes, jamon", Verduras)),
+      (Viernes, Dish("Guisantes","Guisantes, jamon", Verduras)))
+    plannedLunches should contain oneOf (
+      (Sabado, Dish("Filetes","Filetes de ternera", Carne)),
+      (Domingo, Dish("Filetes","Filetes de ternera", Carne)))
+    plannedLunches should contain oneOf (
+      (Sabado, Dish("Chuletas","Chuletas", Carne)),
+      (Domingo, Dish("Chuletas","Chuletas", Carne)))
+  }
   //TODO: Wrong path tests!!
 }
